@@ -5,7 +5,7 @@ import ExpensesFilter from "./ExpensesFilter";
 import { useState } from "react";
 
 function Expenses(props) {
-  const [yearFilter, setYearFilter] = useState("2022");
+  const [yearFilter, setYearFilter] = useState("");
 
   const expenseList = props.items.map(function (expenseItem, i) {
     return (
