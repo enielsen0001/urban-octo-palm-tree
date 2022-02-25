@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./ExpenseForm.scss";
+import $ from "jquery";
 
 const ExpenseForm = (props) => {
   // const [userIntput, setUserInput] = useState({
@@ -61,10 +62,12 @@ const ExpenseForm = (props) => {
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
+
+    props.onCancel();
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <form id="expenseForm" onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
@@ -99,6 +102,9 @@ const ExpenseForm = (props) => {
       </div>
       <div className="new-expense__actions">
         {/* event for button gets added to form not button */}
+        <button type="button" onClick={props.onCancel}>
+          Clear
+        </button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
