@@ -4,13 +4,13 @@ import Card from "../UI/Card";
 import ExpensesFilter from "./ExpensesFilter";
 import { useState } from "react";
 
-function Expenses(props) {
+const Expenses = (props) => {
   const [yearFilter, setYearFilter] = useState("");
 
-  const expenseList = props.items.map(function (expenseItem, i) {
+  const expenseList = props.items.map(function (expenseItem) {
     return (
       <ExpenseItem
-        key={i}
+        key={expenseItem.id}
         title={expenseItem.title}
         amount={expenseItem.amount}
         date={expenseItem.date}
@@ -34,6 +34,6 @@ function Expenses(props) {
       </Card>
     </div>
   );
-}
+};
 
 export default Expenses;
