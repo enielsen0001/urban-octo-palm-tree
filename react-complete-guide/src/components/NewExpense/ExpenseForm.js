@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./ExpenseForm.scss";
-import $ from "jquery";
 
 const ExpenseForm = (props) => {
   // const [userIntput, setUserInput] = useState({
@@ -10,9 +9,26 @@ const ExpenseForm = (props) => {
   // });
 
   // you can either keep individual state slices liek this, or combine them as below
+  const currentDate = () => {
+    const d = new Date();
+    // return "2022-02-26";
+    const year = d.getFullYear().toString();
+    const month =
+      (d.getMonth() + 1).toString().length > 1
+        ? (d.getMonth() + 1).toString()
+        : "0" + (d.getMonth() + 1).toString();
+
+    const day =
+      d.getDate().toString().length > 1
+        ? d.getDate().toString()
+        : "0" + d.getDate().toString();
+
+    return year + "-" + month + "-" + day;
+  };
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
-  const [enteredDate, setEnteredDate] = useState("");
+  const [enteredDate, setEnteredDate] = useState(currentDate());
+  const [enteredType, setEnteredType] = useState("Uncategorized");
 
   const titleChangeHandler = (event) => {
     // if you try to assign just the new info, it will erase the other two items form the useState,
@@ -45,6 +61,10 @@ const ExpenseForm = (props) => {
     setEnteredDate(event.target.value);
   };
 
+  const enteredTypeHandler = (event) => {
+    setEnteredType(event.target.value);
+  };
+
   const submitHandler = (event) => {
     // on submit will automatically refresh page
     event.preventDefault();
@@ -53,6 +73,7 @@ const ExpenseForm = (props) => {
       title: enteredTitle,
       amount: enteredAmount,
       date: new Date(enteredDate),
+      type: enteredType,
     };
 
     // this funciton was passed through props from NewExpense
@@ -62,6 +83,7 @@ const ExpenseForm = (props) => {
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
+    setEnteredType("Uncategorized");
 
     props.onCancel();
   };
@@ -98,6 +120,23 @@ const ExpenseForm = (props) => {
             value={enteredDate}
             onChange={dateChangeHandler}
           />
+        </div>
+
+        <div className="new-expense__control">
+          <label>Expense Type</label>
+          <select onChange={enteredTypeHandler}>
+            <option value="Uncategorized">Uncategorized</option>
+            <option value="Groceries / Household">Groceries / Household</option>
+            <option value="Home Improvement">Home Improvement</option>
+            <option value="Bills / Utilities">Bills / Utilities</option>
+            <option value="Entertainment / Misc">Entertainment / Misc</option>
+            <option value="Dining Out">Dining Out</option>
+            <option value="Gifts">Gifts</option>
+            <option value="School / Childcare">School / Childcare</option>
+            <option value="Medical">Medical</option>
+            <option value="Debt / CC">Debt / CC</option>
+            <option value="Money In">Money In</option>
+          </select>
         </div>
       </div>
       <div className="new-expense__actions">
