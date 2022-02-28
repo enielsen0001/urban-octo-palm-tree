@@ -37,8 +37,8 @@ function App() {
   const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
   const addExpenseHandler = (expense) => {
-    console.log("in app.js");
-    console.log(expense);
+    // console.log("in app.js");
+    // console.log(expense);
 
     // add new expense to expenses array
     // and update reacto cmponent
@@ -46,7 +46,7 @@ function App() {
     //updating based on previous state, so use the function form
 
     setExpenses((prevExpenses) => {
-      console.log(prevExpenses);
+      // console.log(prevExpenses);
       return [expense, ...prevExpenses];
     });
   };

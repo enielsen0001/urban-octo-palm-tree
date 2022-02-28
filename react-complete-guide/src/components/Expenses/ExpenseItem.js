@@ -5,7 +5,7 @@ import ExpenseDate from "./ExpenseDate";
 import Card from "../UI/Card";
 
 function ExpenseItem(props) {
-  console.log(props);
+  // console.log(props);
   return (
     <li>
       <Card className="expense-item">
