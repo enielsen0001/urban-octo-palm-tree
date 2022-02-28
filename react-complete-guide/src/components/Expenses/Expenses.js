@@ -6,6 +6,7 @@ import "./Expenses.scss";
 import Card from "../UI/Card";
 import ExpensesFilter from "./ExpensesFilter";
 import ExpensesList from "./ExpensesList";
+import ExpensesChart from "./ExpensesChart";
 
 const Expenses = (props) => {
   // const [yearFilter, setYearFilter] = useState(new Date().getFullYear());
@@ -13,7 +14,7 @@ const Expenses = (props) => {
 
   const filterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
-    console.log("in Expenses.js: " + selectedYear);
+    // console.log("in Expenses.js: " + selectedYear);
   };
 
   const filteredExpenses = props.items.filter((expense) => {
@@ -31,6 +32,7 @@ const Expenses = (props) => {
           onFilterYear={filterChangeHandler}
           selected={filteredYear}
         />
+        <ExpensesChart expenses={filteredExpenses} />
         <ExpensesList items={filteredExpenses} />
       </Card>
     </div>
