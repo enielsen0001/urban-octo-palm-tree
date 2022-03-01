@@ -20,13 +20,13 @@ const Form = (props) => {
     e.preventDefault();
 
     const userData = {
-      name: username,
+      userName: username,
       age: userAge,
-      id: Math.random(),
+      id: Math.floor(Math.random() * 9999999999),
     };
 
     // name is correct here
-    console.log(userData);
+    // console.log(userData);
 
     props.onSaveUserData(userData);
 

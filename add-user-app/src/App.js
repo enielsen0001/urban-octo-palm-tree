@@ -20,9 +20,6 @@ function App() {
 
   const addUserHandler = (newUser) => {
     setUsers((prevUsers) => {
-      console.log(newUser);
-
-      // need ot get new user form form, name isn't working
       return [newUser, ...prevUsers];
     });
   };
