@@ -4,6 +4,7 @@ import Card from "../UI/Card";
 import Button from "../UI/Button";
 import ErrorModal from "../UI/ErrorModal";
 import classes from "./AddUser.module.css";
+import Wrapper from "../Helpers/Wrapper";
 
 const AddUser = (props) => {
   const [enteredUsername, setEnteredUsername] = useState("");
@@ -76,16 +77,46 @@ const AddUser = (props) => {
     // </div>
 
     // or return an array to wrap more than one element, but in that case you need ot add keys to each elemtn in the array
-    [
-      error && (
+    // [
+    //   error && (
+    //     <ErrorModal
+    //       key="error-modal"
+    //       title={error.title}
+    //       message={error.message}
+    //       onConfirm={errorHandler}
+    //     />
+    //   ),
+    //   <Card key="imput-card" className={classes.input}>
+    //     <form onSubmit={addUserHandler}>
+    //       <label htmlFor="username">Username</label>
+    //       <input
+    //         id="username"
+    //         type="text"
+    //         value={enteredUsername}
+    //         onChange={usernameChangeHandler}
+    //       />
+    //       <label htmlFor="age">Age (Years)</label>
+    //       <input
+    //         id="age"
+    //         type="number"
+    //         value={enteredAge}
+    //         onChange={ageChangeHandler}
+    //       />
+    //       <Button type="submit">Add User</Button>
+    //     </form>
+    //   </Card>,
+    // ]
+
+    // use a wrapper helper component to prevent unnecessary html markup
+    <Wrapper>
+      {error && (
         <ErrorModal
-          key="error-modal"
           title={error.title}
           message={error.message}
           onConfirm={errorHandler}
         />
-      ),
-      <Card key="imput-card" className={classes.input}>
+      )}
+      <Card className={classes.input}>
         <form onSubmit={addUserHandler}>
           <label htmlFor="username">Username</label>
           <input
@@ -103,8 +134,8 @@ const AddUser = (props) => {
           />
           <Button type="submit">Add User</Button>
         </form>
-      </Card>,
-    ]
+      </Card>
+    </Wrapper>
   );
 };
 
