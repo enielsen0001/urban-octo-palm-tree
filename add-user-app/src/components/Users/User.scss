@@ -1,0 +1,9 @@
+.user-item {
+  display: block;
+  padding: 20px 10px;
+  margin: 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid #ccc;
+  }
+}
