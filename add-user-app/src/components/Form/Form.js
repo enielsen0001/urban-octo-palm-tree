@@ -21,17 +21,17 @@ const Form = (props) => {
 
     const userData = {
       userName: username,
-      age: userAge,
+      age: +userAge,
       id: Math.floor(Math.random() * 9999999999),
     };
 
-    // name is correct here
-    // console.log(userData);
-
     props.onSaveUserData(userData);
 
-    setUsername("");
-    setUserAge("");
+    // preser form inputs after error
+    if (username.length !== 0 && userAge.length !== 0) {
+      setUsername("");
+      setUserAge("");
+    }
   };
 
   return (
