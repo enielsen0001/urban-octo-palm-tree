@@ -6,6 +6,10 @@ import Button from "../UI/Button";
 import ErrorModal from "../UI/ErrorModal";
 import classes from "./AddUser.module.css";
 
+// controlled vs uncontrolled compoenets
+// https://stackoverflow.com/a/42522792
+// https://reactjs.org/docs/uncontrolled-components.html
+
 const AddUser = (props) => {
   // https://reactjs.org/docs/refs-and-the-dom.html
 
